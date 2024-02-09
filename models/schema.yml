@@ -2,40 +2,35 @@ version: 2
 sources:
   - name: raw
     schema: gz_raw_data
-    description: greenweez raw data source
+    description: greenwez raw data source
     tables:
       - name: sales
         identifier: raw_gz_sales
-        description: sales of greenweez / we have one row per products_id found in each orders_id
+        description: sales of greenweez/ we have one row per products_id found in each orders_id.
         columns:
+          - name: date_date
+            description: date of purchase
           - name: orders_id
-            tests:
-              - unique 
-              - not_null
+          - name: products_id
+          - name: revenue
+          - name: quantity
+          - name: sales_id
         tests:
           - unique:
-              column_name: "orders_id || '-' || pdt_id)"
-          #- dbt_utils.unique_combination_columns:
-              #combination_of_columns:
-              # - orders_id
-             #  - pdt_id
+              column_name: "(orders_id || '-' || pdt_id)"
       - name: product
         identifier: raw_gz_product
-        description: the date of purchase
+        description: the products of greenws
         columns:
           - name: products_id
             tests:
               - unique
-              - not_null  
+              - not_null
       - name: ship
         identifier: raw_gz_ship
-        description: shipping fees and cost
+        description: the shipments made by greenwez
         columns:
           - name: orders_id
             tests:
               - unique
-                not_null
-                                  
-                
-        
-                  
+              - not_null
