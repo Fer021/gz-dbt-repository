@@ -14,7 +14,7 @@ sources:
               - not_null
         tests:
           - unique:
-              column_name: "orders_id || '-' || products_id)"
+              column_name: "orders_id || '-' || pdt_id)"
           #- dbt_utils.unique_combination_columns:
               #combination_of_columns:
               # - orders_id
@@ -23,7 +23,7 @@ sources:
         identifier: raw_gz_product
         description: the date of purchase
         columns:
-          - name: product_id
+          - name: products_id
             tests:
               - unique
               - not_null  
